@@ -47,6 +47,18 @@ Operadores de comparação
             E => OU => ||
             E => NOT = !
         */
+       /*Forma de converção  de tipo de dado 
+       ParseInt() -> Permite converter um conteudo em numero do tipo INTEIRO    
+       PareFloat() -> Permite converter um conteudo em numero do tipo DECIMAL
+       Number() -> Permite converter um conteudo em NUMERO, pode ser inteiro
+       ou decimal
+       String() -> Permite converter o conteudo para STRING
+       Boolean() => permite converter o conteudo em BOOLEANO    
+
+       typeof() -> Retorna o tipo de dado de uma variável 
+       (String, number, Boolean, Object)
+       */
+       
 
 
 
@@ -59,7 +71,7 @@ const entradaDeDados = readline.createInterface({
 })
 //Entrada de dados do nome
 entradaDeDados.question("Digite o nome do aluno: ", function (nome) {
-    //Receve o nome do aluno
+    //Recebe o nome do aluno
     let nomeAluno = nome
 
     entradaDeDados.question("Digite a nota1: ", function (valor1) {
@@ -80,9 +92,26 @@ entradaDeDados.question("Digite o nome do aluno: ", function (nome) {
                         console.log("ERROR: Somente são possivel valores entre 0 até 100")
                     } else if (nota1 > 100 || nota2 > 100 || nota3 > 100 || nota4 > 100) {
                         console.log("ERROR: Somente são possivel valores entre 0 até 100")
-                    } else if(isNaN(nota1)|| isNaN(nota2)|| isNaN(nota3)|| isNaN(nota4)  ) {
-                        console.log("ERROR: Somente numeros sao permitidos na entrada das notasJ" )
+                    } else if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || isNaN(nota4)) {
+                        console.log("ERROR: Somente numeros sao permitidos na entrada das notas")
+                    }else {
+                        let statusAluno
+                        let media = (Number(nota1) + Number(nota2) + Number(nota3) + Number(nota4))/4
+               
+
+                        if(media >=70 ){
+                            statusAluno = "Aprovado"
+                        }else if(media >= 50 && media < 70){
+                            statusAluno = "Recuperação"
+                        }else if(media < 50){
+                            statusAluno = "Reprovado"
+                        }
+                        console.log(`Aluno: ${nomeAluno}\n Media final: ${media.toFixed(2)}\n Status do aluno ${statusAluno}`)
+                   
                     }
+                    
+
+                    
                 })
             })
         })
